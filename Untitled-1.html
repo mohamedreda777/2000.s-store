@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2000's STORE | هودي الأسطورة CR7 - الإصدار المحدود</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        /* ==== المتغيرات اللونية ==== */
+        :root {
+            --main-red: #D2001A; 
+            --hover-red: #ff1a1a;
+            --bg-dark: #080808; 
+            --text-light: #f5f5f5;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Tajawal', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-light);
+            scroll-behavior: smooth;
+        }
+        
+        /* ==== ستايل موحد لاسم البراند (تم تعديل الحجم) ==== */
+        .brand-name-style { 
+            font-family: 'Audiowide', sans-serif; 
+            font-size: 34px; 
+            font-weight: 700; 
+            color: white;
+            padding: 10px 15px;
+            background: rgba(0, 0, 0, 0.6);
+            border: 2px solid var(--main-red);
+            border-radius: 5px;
+            display: inline-block;
+            letter-spacing: 2px; 
+            text-shadow: 1px 1px 5px var(--main-red);
+            direction: ltr; 
+            unicode-bidi: embed; 
+        }
+        
+        /* ستايل الهيرو - Brand Name */
+        .hero .brand-name-style {
+             margin-bottom: 20px;
+        }
+
+        /* ستايل اسم البراند داخل النصوص العربية (عناوين وفقرات) (تم تعديل الحجم) */
+        .inline-brand-style {
+            font-family: 'Audiowide', sans-serif;
+            font-size: 22px; 
+            color: var(--main-red); 
+            direction: ltr;
+            unicode-bidi: embed;
+            font-weight: 700;
+            text-shadow: 1px 1px 3px rgba(210, 0, 26, 0.5);
+            margin: 0 5px;
+        }
+        
+        /* ستايل اسم البراند كعنوان رئيسي في الفوتر (تم تعديل الحجم) */
+        .footer-logo-desc h3.brand-name-style {
+            font-size: 28px; 
+            padding: 0;
+            border: none;
+            background: none;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+
+        /* ==== HERO SECTION ==== */
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 3px solid var(--main-red);
+        }
+
+        .hero video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(35%) contrast(1.1);
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .hero .content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            width: 90%;
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 65px;
+            font-weight: 900;
+            margin-bottom: 10px;
+            color: white;
+            text-shadow: 3px 3px 0px var(--main-red);
+        }
+
+        .hero p {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 35px;
+            color: #ddd;
+        }
+
+        .cta-link {
+            background: var(--main-red);
+            padding: 18px 45px;
+            font-size: 24px;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(210, 0, 26, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-link:hover {
+            background: var(--hover-red);
+            transform: translateY(-3px);
+            box-shadow: 0 0 30px rgba(255, 26, 26, 0.7);
+        }
+        
+        /* ==== WHY US SECTION ==== */
+        .why-us-section {
+            background: #111; 
+            padding: 80px 20px;
+            color: var(--text-light);
+            text-align: center;
+        }
+
+        .why-us-section h2 {
+            font-size: 40px;
+            font-weight: 900;
+            margin-bottom: 20px;
+            color: white; 
+        }
+        
+        .why-us-section > p {
+            color: #aaa; 
+        }
+
+        .why-us-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1100px;
+            margin: 50px auto 0;
+        }
+
+        .why-us-item {
+            text-align: center;
+            padding: 20px;
+            background: #000; 
+            border-radius: 8px;
+            border: 1px solid #333;
+        }
+
+        .why-us-item .icon {
+            font-size: 45px;
+            color: var(--main-red);
+            margin-bottom: 15px;
+        }
+
+        .why-us-item h3 {
+            font-size: 22px;
+            font-weight: 700;
+            color: white; 
+        }
+
+        .why-us-item p {
+            color: #aaa; 
+            line-height: 1.6;
+            font-size: 16px;
+        }
+        
+        .icon-shipping { color: #f9a825; } 
+        .icon-guarantee { color: #4CAF50; } 
+        .icon-exchange { color: #E91E63; } 
+        
+        /* ==== FEATURES SECTION ==== */
+        .features {
+            background: var(--bg-dark);
+            padding: 60px 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: #161616;
+            padding: 30px;
+            border-right: 4px solid var(--main-red);
+            border-radius: 8px;
+            text-align: right;
+            transition: 0.3s;
+        }
+        
+        .product {
+            padding: 80px 20px;
+            text-align: center;
+            background: #111; 
+        }
+
+        .product h2 {
+            font-size: 42px;
+            font-weight: 900;
+            color: white;
+            margin-bottom: 50px;
+        }
+
+        .product h2 span {
+            color: var(--main-red);
+        }
+
+        .product-details-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+        
+        .image-slider {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+        }
+
+        /* ==== تصحيح CSS ليعمل مع جميع الشرائح (صور وفيديو) باستخدام فئة slide-item ==== */
+        .slide-item { 
+            width: 100%;
+            max-height: 500px;
+            display: none; 
+            border-radius: 15px;
+            object-fit: cover;
+            animation: fadeIn 0.5s ease-in-out; 
+        }
+
+        .slide-item.active {
+            display: block; 
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0.5; }
+            to { opacity: 1; }
+        }
+
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(210, 0, 26, 0.7); 
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            z-index: 20;
+            font-size: 20px;
+            transition: background 0.3s;
+        }
+
+        .slider-btn:hover {
+            background: var(--hover-red);
+        }
+
+        .prev-btn { right: 0; border-radius: 15px 0 0 15px; }
+        .next-btn { left: 0; border-radius: 0 15px 15px 0; }
+        
+        .price-box {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 25px 40px;
+            border-radius: 10px;
+            border: 1px solid var(--main-red);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .price-box::before {
+            content: 'إصدار محدود (CR7)'; 
+            position: absolute;
+            top: 10px;
+            left: -35px;
+            background: var(--main-red);
+            color: white;
+            padding: 5px 30px;
+            transform: rotate(-45deg);
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .old-price {
+            font-size: 22px;
+            color: #888;
+            text-decoration: line-through;
+            margin-bottom: 5px;
+        }
+
+        .new-price {
+            font-size: 50px;
+            font-weight: 900;
+            color: var(--main-red);
+            margin: 0;
+            line-height: 1;
+        }
+
+        .size-guide {
+            padding: 60px 20px;
+            text-align: center;
+            background: #1A1A1A;
+        }
+
+        .size-guide h2 {
+            font-size: 36px;
+            color: var(--main-red);
+            margin-bottom: 30px;
+            font-weight: 900;
+        }
+
+        .size-guide p {
+            font-size: 18px;
+            margin-bottom: 25px;
+            color: #ddd;
+        }
+
+        .size-table {
+            width: 100%;
+            max-width: 650px;
+            margin: 0 auto;
+            border-collapse: collapse;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            font-size: 18px;
+            color: var(--text-light);
+        }
+
+        .size-table th, .size-table td {
+            border: 1px solid #333;
+            padding: 15px 10px;
+        }
+
+        .size-table th {
+            background: var(--main-red);
+            color: white;
+            font-weight: 700;
+        }
+
+        .size-table tr:nth-child(even) {
+            background: #111;
+        }
+
+        .size-table tr:hover {
+            background: #252525;
+        }
+        
+        .legacy-section {
+            padding: 80px 20px;
+            background: url('cr7_bg.jpg') no-repeat center center; 
+            background-size: cover;
+            position: relative;
+            color: white;
+            text-align: center;
+        }
+        
+        .legacy-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.85); 
+            z-index: 1;
+        }
+
+        .legacy-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .legacy-content h2 {
+            font-size: 45px;
+            color: var(--main-red);
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 5px #000;
+        }
+
+        .legacy-content p {
+            line-height: 1.7;
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .stat-item {
+            background: #1A1A1A;
+            padding: 25px;
+            border-radius: 10px;
+            border-top: 4px solid var(--main-red);
+        }
+
+        .stat-item .number {
+            font-family: 'Audiowide', sans-serif;
+            font-size: 40px;
+            color: var(--main-red);
+            font-weight: 900;
+        }
+
+        .stat-item .text {
+            font-size: 18px;
+            margin-top: 5px;
+            color: #ccc;
+        }
+        
+        /* ==== FAQ SECTION ==== */
+        .faq-section {
+            background: var(--bg-dark);
+            padding: 80px 20px;
+            color: var(--text-light);
+            text-align: center;
+            border-top: 3px solid var(--main-red);
+        }
+
+        .faq-section h2 {
+            font-size: 40px;
+            font-weight: 900;
+            margin-bottom: 50px;
+            color: var(--main-red);
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: right;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #333; 
+            padding: 20px 0;
+            cursor: pointer;
+        }
+        
+        .faq-item:hover .question {
+            color: var(--main-red);
+        }
+
+        .question {
+            font-size: 18px;
+            font-weight: 700;
+            color: white; 
+            position: relative;
+        }
+        
+        .question i {
+            margin-left: 15px;
+            font-size: 16px;
+            transition: transform 0.3s;
+        }
+        
+        .faq-item.active .question i {
+            transform: rotate(180deg);
+        }
+
+        /* تحسينات لستايل الـ FAQ ليعمل مع الرسوم المتحركة */
+        .answer {
+            font-size: 16px;
+            color: #ccc; 
+            padding-top: 0; /* تم التعديل */
+            line-height: 1.7;
+            max-height: 0; /* تم التعديل للإخفاء باستخدام الارتفاع */
+            overflow: hidden; /* تم التعديل */
+            transition: max-height 0.4s ease-out, padding-top 0.4s ease-out; /* تم التعديل */
+        }
+        
+        /* الفئة الجديدة لإظهار الإجابة */
+        .faq-item.active .answer {
+            max-height: 500px; /* قيمة كبيرة بما يكفي لأي إجابة */
+            padding-top: 15px; /* لإضافة مسافة بعد الفتح */
+        }
+        
+        /* تم إزالة @keyframes slideDown ودمجه في الانتقالات (transition) */
+        
+        /* ==== FOOTER ==== */
+        .site-footer {
+            background: black;
+            color: #aaa;
+            padding: 60px 20px 30px;
+            border-top: 1px solid #333;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: right;
+        }
+
+        .footer-logo-desc {
+            max-width: 400px;
+        }
+        
+        /* تم دمج ستايل العنوان الرئيسي للفوتر هنا ليأخذ حجمه الجديد */
+        .footer-logo-desc h3.brand-name-style {
+            font-family: 'Audiowide', sans-serif;
+            font-size: 28px; 
+            color: var(--main-red);
+            letter-spacing: 2px;
+            font-weight: 700;
+            direction: ltr; 
+            unicode-bidi: embed;
+            padding: 0;
+            border: none;
+            background: none;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .footer-logo-desc p {
+            line-height: 1.7;
+            font-size: 15px;
+            color: #aaa;
+        }
+
+        .footer-links h3, .footer-social h3 {
+            font-size: 20px;
+            color: var(--main-red);
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .footer-links a {
+            display: block;
+            color: #ccc; 
+            text-decoration: none;
+            margin-bottom: 10px;
+            transition: color 0.3s;
+            font-size: 16px;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-social .social-icons a {
+            font-size: 28px;
+            color: var(--main-red);
+            margin-left: 15px;
+            transition: opacity 0.3s;
+        }
+
+        .footer-social .social-icons a:hover {
+            opacity: 0.7;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #333;
+            margin-top: 30px;
+            font-size: 14px;
+            color: #555;
+        }
+        
+        .footer-bottom .inline-brand-style {
+            font-size: 16px !important; 
+        }
+
+        /* ==== Media Queries ==== */
+        @media (min-width: 768px) {
+            .footer-logo-desc { width: 40%; }
+            .footer-links { width: 20%; }
+            .footer-social { width: 20%; }
+            .footer-content { text-align: right; }
+        }
+        @media (max-width: 768px) {
+             .faq-section, .why-us-section { padding: 40px 15px; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="hero">
+        <?php $whatsapp_link = "https://wa.me/201558347735?text=" . urlencode("مرحباً، أرغب في طلب هودي CR7 الأسود الخاص بالإصدار المحدود، من فضلك أرسل لي تفاصيل الطلب."); ?>
+        
+        <video id="heroVideo" autoplay muted loop playsinline>
+            <source src="hero.mp4" type="video/mp4">
+            متصفحك لا يدعم عنصر الفيديو.
+        </video>
+
+        <div class="content">
+            <div class="brand-name-style" dir="ltr">2000's STORE</div>
+            <h1>هودي الأسطورة <span style="color: var(--main-red)">CR7</span>: تاريخ يُلبس</h1>
+            <p>من براند <span class="inline-brand-style">2000's STORE</span>.. تصميم حصري، جودة أبطال. ارتدِ شغف كرة القدم والأرقام القياسية. اطلب الآن لتكن جزءاً من الإرث.</p>
+            <a href="https://wa.me/201558347735" class="cta-link">
+                اطلب هودي الأسطورة الآن عبر الواتساب
+            </a>
+        </div>
+    </div>
+
+    <div class="why-us-section">
+        <h2>لماذا تختار هودي <span style="color: var(--main-red)">CR7</span> من <span class="inline-brand-style">2000's STORE</span>؟</h2>
+        <p>ميزات استثنائية تحصل عليها عند طلبك من متجرنا</p>
+        
+        <div class="why-us-grid">
+            <div class="why-us-item">
+                <i class="fas fa-truck icon icon-shipping"></i>
+                <h3>شحن مجاني تماماً</h3>
+                <p>احصل على شحن مجاني حتى باب بيتك! تسوق الآن دون تحمل تكاليف إضافية واستمتع بتجربة تسوق مريحة وآمنة.</p>
+            </div>
+            <div class="why-us-item">
+                <i class="fas fa-check-circle icon icon-guarantee"></i>
+                <h3>ضمان 100% على الجودة</h3>
+                <p>نضمن لك جودة التصميم والخامة بنسبة 100%. منتج يليق بالأسطورة، لترتديه بكل ثقة.</p>
+            </div>
+            <div class="why-us-item">
+                <i class="fas fa-sync-alt icon icon-exchange"></i>
+                <h3>استبدال خلال 14 يوم</h3>
+                <p>استبدل المنتج في أي وقت إذا كان هناك أي مشكلة به، وبضمان كامل لحقوقك خلال أسبوعين من الاستلام.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="features">
+        <div class="feature-card">
+            <span>1</span>
+            <h3>جودة الأبطال الخالدة</h3>
+            <p>خامة ميلتون ثقيل فائقة النعومة. لون أسود ثابت ومريح جداً للجسم، ليتناسب مع شخصية البطل.</p>
+        </div>
+        <div class="feature-card">
+            <span>2</span>
+            <h3>تصميم يُحاكي الإنجاز</h3>
+            <p>طباعة ديجيتال HD بتقنية لا تتأثر بالغسيل، بألوان الأحمر والأبيض النابضة التي تعكس القوة والشغف.</p>
+        </div>
+        <div class="feature-card">
+            <span>3</span>
+            <h3>اقتناء سهل ومضمون</h3>
+            <p>شحن لجميع المحافظات مع إمكانية **المعرفة قبل الاستلام** والدفع عند الباب. وصول سريع يليق بإرث الأسطورة.</p>
+        </div>
+    </div>
+
+    <div class="product">
+        <h2>اكتشف تفاصيل الإصدار <span>الأسود</span> المحدود: رمز التحدي</h2>
+        
+        <div class="product-details-container">
+            
+            <div class="image-slider">
+                <img src="front.JPG" alt="واجهة هودي رونالدو" class="slide-item active">
+                <img src="back.JPG" alt="خلفية هودي رونالدو" class="slide-item">
+                <img src="2.JPG" alt="هودي من الجانب" class="slide-item">
+                <img src="3.JPG" alt="تفاصيل الطباعة عن قرب" class="slide-item">
+                
+                <video class="slide-item" poster="front.JPG" loop preload="metadata" style="width: 100%; max-height: 500px; border-radius: 15px; object-fit: cover;">
+                    <source src="4.mp4" type="video/mp4">
+                    متصفحك لا يدعم عنصر الفيديو.
+                </video> 
+                <video class="slide-item" poster="front.JPG" loop preload="metadata" style="width: 100%; max-height: 500px; border-radius: 15px; object-fit: cover;">
+                    <source src="5.mp4" type="video/mp4">
+                    متصفحك لا يدعم عنصر الفيديو.
+                </video> 
+                
+                <button class="slider-btn prev-btn" onclick="changeSlide(-1)">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                <button class="slider-btn next-btn" onclick="changeSlide(1)">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+            </div>
+            <div class="price-box">
+                <div class="old-price">999 جنيه</div>
+                <div class="new-price">699 جنيه</div>
+                <p style="color:#aaa; margin-top:10px; font-size:14px">احجز نسختك من الإصدار المحدود بسعر خاص!</p>
+            </div>
+
+            <a href="https://wa.me/201558347735" class="cta-link" style="width: 100%; max-width: 400px;">
+                اضغط هنا للطلب الفوري ⚡
+            </a>
+        </div>
+    </div>
+    
+    <div class="size-guide" id="size">
+        <h2>📏 جدول المقاسات: مقاسات الأبطال (مريح - Regular Fit)</h2>
+        <p>اختر مقاسك بناءً على الوزن والطول لضمان أفضل إطلالة تحاكي أناقة CR7!</p>
+        <table class="size-table">
+            <thead>
+                <tr>
+                    <th>المقاس</th>
+                    <th>الطول (سم)</th>
+                    <th>العرض (سم)</th>
+                    <th>الوزن المقترح (كجم)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>M</td><td>70</td><td>50</td><td>55 - 65</td></tr>
+                <tr><td>L</td><td>72</td><td>53</td><td>65 - 75</td></tr>
+                <tr><td>XL</td><td>74</td><td>56</td><td>75 - 85</td></tr>
+                <tr><td>2XL</td><td>76</td><td>59</td><td>85 - 95</td></tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="legacy-section">
+        <div class="legacy-content">
+            <h2>إرث الأسطورة لا يُقاس: أنت ترتدي فخامة <span style="color: white">CR7</span></h2>
+            <p style="font-size: 20px; color: #ddd; max-width: 800px; margin: 0 auto 40px;">تصميم الهودي مستوحى من اللحظات التي صنعت التاريخ. ارتدِ هذه الإنجازات واحتفل بأرقام النجم الخالد:</p>
+            <div class="stat-grid">
+                <div class="stat-item">
+                    <div class="number">🏆 5</div><div class="text">ألقاب دوري أبطال أوروبا (القائد)</div>
+                </div>
+                <div class="stat-item">
+                    <div class="number">⚽ 890+</div><div class="text">الهداف التاريخي لكرة القدم</div>
+                </div>
+                <div class="stat-item">
+                    <div class="number">🥇 5</div><div class="text">جوائز الكرة الذهبية (البالون دور)</div>
+                </div>
+                <div class="stat-item">
+                    <div class="number">🇵🇹 القائد</div><div class="text">بطل كأس الأمم الأوروبية 2016</div>
+                </div>
+            </div>
+            <a href="https://wa.me/201558347735" class="cta-link" style="margin-top: 50px;">اطلب هودي الأسطورة الآن وانضم للإرث</a>
+        </div>
+    </div>
+    
+    <div class="faq-section" id="faq">
+        <h2>الأسئلة الشائعة</h2>
+        <p style="color: #ccc; margin-bottom: 50px;">هنا هتلاقى إجابات لكل الأسئلة التى ممكن تخطر على بالك</p>
+        
+        <div class="faq-container">
+            
+            <div class="faq-item">
+                <div class="question">
+                    ما هي مدة التوصيل للأوردر؟ <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="answer">
+                    متوسط مدة توصيل الأوردر من **3-5 أيام** حسب مكان العميل. نهدف دائماً إلى سرعة وسلامة التوصيل لترتدي الهودي بأسرع وقت.
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="question">
+                    كيف أعرف مقاسي؟ <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="answer">
+                    نوفر **جدول مقاسات سهل ومفصل** في قسم المقاسات (يمكنك الصعود للأعلى لمعرفة جدول المقاسات) لضمان اختيار المقاس المناسب الذي يليق بك.
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="question">
+                    ما هي طرق الدفع المتاحة؟ <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="answer">
+                    متاح الدفع عن طريق (**انستاباى / المحافظ الذكية / الدفع عند الاستلام**). اختر الطريقة الأنسب لك.
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="question">
+                    هل يمكنني معاينة المنتج قبل الاستلام؟ <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="answer">
+                    أجل طبعاً، نقدم خدمة **معاينة الأوردر** قبل الاستلام براحتك للاستفادة بتجربة شراء مضمونة ومريحة وتأكد من جودة منتج الأسطورة.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="question">
+                    ما هي سياسة الاستبدال و الاسترجاع؟ <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="answer">
+                    يمكنك بكل بساطة استبدال أو استرجاع المنتج في خلال **14 يوم** من تاريخ استلام المنتج، بدون إبداء أي توضيحات. و استرجاع الأموال يتم في خلال **72 ساعة**.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="question">
+                    آراء العملاء عن التواصل مع خدمة العملاء <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="answer">
+                    نقدم لك خدمة تواصل ودية وآمنة عبر (**واتساب، انستجرام، الهاتف**). نعمل دائماً لضمان راحتك وسرعة الرد على استفساراتك.
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="question">
+                    هل هناك خيار لهدايا المنتج لشخص آخر؟ <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="answer">
+                    نعم، يمكنك وضع أي وصف لطلبك أن تشحن المنتج كهدية لشخص آخر وسيتم تنفيذ الطلب بشكل احترافي.
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            
+            <div class="footer-logo-desc">
+                <h3 class="brand-name-style" dir="ltr">2000's STORE</h3> 
+                <p>
+                    في <span class="inline-brand-style">2000's STORE</span>، نقدم لك تجربة تسوق ممتعة وعملية. نحرص دائماً على اختيار أفضل التصاميم وأحدث الصيحات، مع التركيز على الجودة والراحة. هدفنا هو أن نمنحك تجربة تسوق من منزلك بكل راحة وسعادة!
+                </p>
+            </div>
+            
+            <div class="footer-links">
+                <h3>روابط</h3>
+                <a href="#">الرئيسية</a>
+                <a href="#size">أعرف مقاسك</a>
+                <a href="#faq">الأسئلة الشائعة</a>
+            </div>
+
+            <div class="footer-social">
+                <h3>تابعنا</h3>
+                <div class="social-icons">
+                    <a href="https://wa.me/201558347735" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.instagram.com/2000.s_store?igsh=MWUyczl1eHk2cjZlcw==" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.tiktok.com/@2000s..store?_r=1&_t=ZS-91mxYSP5cEZ" target="_blank"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            جميع الحقوق محفوظة لـ <span class="inline-brand-style" style="font-size: 16px !important; text-shadow: none;">2000's STORE</span> &copy; 2025
+        </div>
+    </footer>
+    
+    <script>
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        function changeSlide(n) {
+            slideIndex += n; 
+            showSlides(slideIndex);
+        }
+
+        // الدالة المعدلة لدعم الصور والفيديو معاً
+        function showSlides(n) {
+            let i;
+            // اختيار جميع العناصر التي تحمل فئة slide-item (الصور والفيديوهات)
+            let slides = document.querySelectorAll(".slide-item"); 
+            
+            // التحقق من حدود الشرائح (سواء لليمين أو اليسار)
+            if (n > slides.length) {slideIndex = 1}    
+            if (n < 1) {slideIndex = slides.length}
+
+            for (i = 0; i < slides.length; i++) {
+                slides[i].classList.remove('active'); // إزالة الفئة النشطة لإخفاء الشريحة
+                // إيقاف تشغيل أي فيديو يتم إخفاؤه
+                if (slides[i].tagName === 'VIDEO') {
+                    slides[i].pause();
+                    slides[i].currentTime = 0; // إعادة الفيديو إلى البداية
+                }
+            }
+            
+            // تفعيل الشريحة الجديدة
+            slides[slideIndex-1].classList.add('active'); 
+            
+            // إذا كانت الشريحة الجديدة فيديو، يتم تشغيله
+            if (slides[slideIndex - 1].tagName === 'VIDEO') {
+                // محاولة التشغيل، وهي ممارسة مقبولة في محاولة التغلب على قيود المتصفح
+                slides[slideIndex - 1].play().catch(error => {
+                    console.log("Autoplay failed for product video, user interaction needed.", error);
+                });
+            }
+        }
+        
+        // FAQ Toggle - تم التعديل
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.addEventListener('click', event => {
+                const answer = item.querySelector('.answer');
+                
+                // Close all other answers and remove active class
+                document.querySelectorAll('.faq-item').forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                
+                // Toggle the current item
+                item.classList.toggle('active');
+            });
+        });
+        
+        // تحسين إضافي: محاولة تشغيل فيديو الهيرو عند تحميل الصفحة
+        document.addEventListener("DOMContentLoaded", function() {
+            const heroVideo = document.getElementById('heroVideo');
+            if (heroVideo) {
+                // التأكد من أن الفيديو مكتوم قبل محاولة التشغيل
+                heroVideo.muted = true; 
+                heroVideo.play().catch(error => {
+                    console.log("Autoplay failed for hero video.", error);
+                    // يمكن إضافة زر تشغيل هنا إذا فشل التشغيل التلقائي
+                });
+            }
+        });
+        
+    </script>
+
+</body>
+</html>
