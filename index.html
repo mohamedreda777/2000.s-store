@@ -16,6 +16,8 @@
             --hover-red: #ff1a1a;
             --bg-dark: #080808; 
             --text-light: #f5f5f5;
+            --modal-bg: rgba(0, 0, 0, 0.9);
+            --form-bg: #151515;
         }
 
         body {
@@ -26,7 +28,7 @@
             scroll-behavior: smooth;
         }
         
-        /* ==== ستايل موحد لاسم البراند (تم تعديل الحجم) ==== */
+        /* ==== ستايل موحد لاسم البراند ==== */
         .brand-name-style { 
             font-family: 'Audiowide', sans-serif; 
             font-size: 34px; 
@@ -43,12 +45,8 @@
             unicode-bidi: embed; 
         }
         
-        /* ستايل الهيرو - Brand Name */
-        .hero .brand-name-style {
-             margin-bottom: 20px;
-        }
+        .hero .brand-name-style { margin-bottom: 20px; }
 
-        /* ستايل اسم البراند داخل النصوص العربية (عناوين وفقرات) (تم تعديل الحجم) */
         .inline-brand-style {
             font-family: 'Audiowide', sans-serif;
             font-size: 22px; 
@@ -60,7 +58,6 @@
             margin: 0 5px;
         }
         
-        /* ستايل اسم البراند كعنوان رئيسي في الفوتر (تم تعديل الحجم) */
         .footer-logo-desc h3.brand-name-style {
             font-size: 28px; 
             padding: 0;
@@ -69,7 +66,6 @@
             display: block;
             margin-bottom: 10px;
         }
-
 
         /* ==== HERO SECTION ==== */
         .hero {
@@ -116,7 +112,8 @@
             color: #ddd;
         }
 
-        .cta-link {
+        /* زر الدعوة لاتخاذ إجراء (CTA) */
+        .cta-button {
             background: var(--main-red);
             padding: 18px 45px;
             font-size: 24px;
@@ -125,485 +122,231 @@
             border-radius: 8px;
             cursor: pointer;
             font-weight: bold;
+            font-family: 'Tajawal', sans-serif;
             transition: all 0.3s ease;
             box-shadow: 0 0 20px rgba(210, 0, 26, 0.4);
             text-transform: uppercase;
             letter-spacing: 1px;
-            text-decoration: none;
             display: inline-block;
+            text-decoration: none;
         }
 
-        .cta-link:hover {
+        .cta-button:hover {
             background: var(--hover-red);
             transform: translateY(-3px);
             box-shadow: 0 0 30px rgba(255, 26, 26, 0.7);
         }
         
-        /* ==== WHY US SECTION ==== */
-        .why-us-section {
-            background: #111; 
-            padding: 80px 20px;
-            color: var(--text-light);
-            text-align: center;
+        /* ==== تنسيقات نافذة الطلب (Modal) ==== */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--modal-bg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
         }
 
-        .why-us-section h2 {
-            font-size: 40px;
-            font-weight: 900;
-            margin-bottom: 20px;
-            color: white; 
-        }
-        
-        .why-us-section > p {
-            color: #aaa; 
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
         }
 
-        .why-us-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            max-width: 1100px;
-            margin: 50px auto 0;
+        .form-container {
+            background: var(--form-bg);
+            padding: 30px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 500px;
+            border: 2px solid var(--main-red);
+            position: relative;
+            transform: scale(0.8);
+            transition: all 0.3s ease;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 0 30px rgba(0,0,0,0.8);
         }
 
-        .why-us-item {
-            text-align: center;
-            padding: 20px;
-            background: #000; 
-            border-radius: 8px;
-            border: 1px solid #333;
+        .modal-overlay.active .form-container {
+            transform: scale(1);
         }
 
-        .why-us-item .icon {
-            font-size: 45px;
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: none;
+            border: none;
+            color: #aaa;
+            font-size: 24px;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close-modal:hover { color: var(--main-red); }
+
+        .form-container h2 {
             color: var(--main-red);
-            margin-bottom: 15px;
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-weight: 900;
         }
 
-        .why-us-item h3 {
-            font-size: 22px;
-            font-weight: 700;
-            color: white; 
-        }
-
-        .why-us-item p {
-            color: #aaa; 
-            line-height: 1.6;
-            font-size: 16px;
-        }
+        .form-group { margin-bottom: 15px; text-align: right; }
         
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #ddd;
+        }
+
+        .form-group input, 
+        .form-group select, 
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            background: #222;
+            border: 1px solid #444;
+            border-radius: 6px;
+            color: white;
+            font-family: 'Tajawal', sans-serif;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        .form-group input:focus, 
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--main-red);
+            outline: none;
+            box-shadow: 0 0 5px rgba(210, 0, 26, 0.5);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: var(--main-red);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+            font-family: 'Tajawal', sans-serif;
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover { background: var(--hover-red); }
+
+        /* ==== باقي الأقسام ==== */
+        .why-us-section { background: #111; padding: 80px 20px; color: var(--text-light); text-align: center; }
+        .why-us-section h2 { font-size: 40px; font-weight: 900; margin-bottom: 20px; color: white; }
+        .why-us-section > p { color: #aaa; }
+        .why-us-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; max-width: 1100px; margin: 50px auto 0; }
+        .why-us-item { text-align: center; padding: 20px; background: #000; border-radius: 8px; border: 1px solid #333; }
+        .why-us-item .icon { font-size: 45px; color: var(--main-red); margin-bottom: 15px; }
+        .why-us-item h3 { font-size: 22px; font-weight: 700; color: white; }
+        .why-us-item p { color: #aaa; line-height: 1.6; font-size: 16px; }
         .icon-shipping { color: #f9a825; } 
         .icon-guarantee { color: #4CAF50; } 
         .icon-exchange { color: #E91E63; } 
         
-        /* ==== FEATURES SECTION ==== */
-        .features {
-            background: var(--bg-dark);
-            padding: 60px 20px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .feature-card {
-            background: #161616;
-            padding: 30px;
-            border-right: 4px solid var(--main-red);
-            border-radius: 8px;
-            text-align: right;
-            transition: 0.3s;
-        }
+        .features { background: var(--bg-dark); padding: 60px 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; max-width: 1200px; margin: 0 auto; }
+        .feature-card { background: #161616; padding: 30px; border-right: 4px solid var(--main-red); border-radius: 8px; text-align: right; transition: 0.3s; }
         
-        .product {
-            padding: 80px 20px;
-            text-align: center;
-            background: #111; 
-        }
+        .product { padding: 80px 20px; text-align: center; background: #111; }
+        .product h2 { font-size: 42px; font-weight: 900; color: white; margin-bottom: 50px; }
+        .product h2 span { color: var(--main-red); }
 
-        .product h2 {
-            font-size: 42px;
-            font-weight: 900;
-            color: white;
-            margin-bottom: 50px;
+        /* التعديل لظهور العناصر تحت بعضها دائماً */
+        .product-details-container { 
+            display: flex; 
+            flex-direction: column; /* تم تثبيت هذا الاتجاه ليكون عموديًا دائمًا */
+            align-items: center; 
+            gap: 30px; 
+            max-width: 900px; 
+            margin: 0 auto; 
         }
-
-        .product h2 span {
-            color: var(--main-red);
-        }
-
-        .product-details-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 30px;
-        }
+        /* تم حذف @media (min-width: 800px) هنا */
         
-        .image-slider {
-            position: relative;
-            width: 100%;
-            max-width: 400px;
-            margin: 0 auto;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
-        }
+        .image-slider { position: relative; width: 100%; max-width: 400px; margin: 0; border-radius: 15px; overflow: hidden; box-shadow: 0 0 25px rgba(0, 0, 0, 0.5); }
+        .price-box { width: 100%; max-width: 400px; background: rgba(255, 255, 255, 0.05); padding: 25px 40px; border-radius: 10px; border: 1px solid var(--main-red); position: relative; overflow: hidden; text-align: center; }
+        .price-box::before { content: 'إصدار محدود (CR7)'; position: absolute; top: 10px; left: -35px; background: var(--main-red); color: white; padding: 5px 30px; transform: rotate(-45deg); font-size: 12px; font-weight: bold; }
+        .old-price { font-size: 22px; color: #888; text-decoration: line-through; margin-bottom: 5px; }
+        .new-price { font-size: 50px; font-weight: 900; color: var(--main-red); margin: 0; line-height: 1; }
 
-        /* ==== تصحيح CSS ليعمل مع جميع الشرائح (صور وفيديو) باستخدام فئة slide-item ==== */
-        .slide-item { 
-            width: 100%;
-            max-height: 500px;
-            display: none; 
-            border-radius: 15px;
-            object-fit: cover;
-            animation: fadeIn 0.5s ease-in-out; 
-        }
-
-        .slide-item.active {
-            display: block; 
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0.5; }
-            to { opacity: 1; }
-        }
-
-        .slider-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(210, 0, 26, 0.7); 
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            cursor: pointer;
-            z-index: 20;
-            font-size: 20px;
-            transition: background 0.3s;
-        }
-
-        .slider-btn:hover {
-            background: var(--hover-red);
-        }
-
+        .slide-item { width: 100%; max-height: 500px; display: none; border-radius: 15px; object-fit: cover; animation: fadeIn 0.5s ease-in-out; }
+        .slide-item.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0.5; } to { opacity: 1; } }
+        .slider-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(210, 0, 26, 0.7); color: white; border: none; padding: 10px 15px; cursor: pointer; z-index: 20; font-size: 20px; transition: background 0.3s; }
+        .slider-btn:hover { background: var(--hover-red); }
         .prev-btn { right: 0; border-radius: 15px 0 0 15px; }
         .next-btn { left: 0; border-radius: 0 15px 15px 0; }
         
-        .price-box {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 25px 40px;
-            border-radius: 10px;
-            border: 1px solid var(--main-red);
-            position: relative;
-            overflow: hidden;
-        }
+        .size-guide { padding: 60px 20px; text-align: center; background: #1A1A1A; }
+        .size-guide h2 { font-size: 36px; color: var(--main-red); margin-bottom: 30px; font-weight: 900; }
+        .size-guide p { font-size: 18px; margin-bottom: 25px; color: #ddd; }
+        .size-table { width: 100%; max-width: 650px; margin: 0 auto; border-collapse: collapse; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); font-size: 18px; color: var(--text-light); text-align: center; }
+        .size-table th, .size-table td { border: 1px solid #333; padding: 15px 10px; }
+        .size-table th { background: var(--main-red); color: white; font-weight: 700; }
+        .size-table tr:nth-child(even) { background: #111; }
+        .size-table tr:hover { background: #252525; }
         
-        .price-box::before {
-            content: 'إصدار محدود (CR7)'; 
-            position: absolute;
-            top: 10px;
-            left: -35px;
-            background: var(--main-red);
-            color: white;
-            padding: 5px 30px;
-            transform: rotate(-45deg);
-            font-size: 12px;
-            font-weight: bold;
-        }
-
-        .old-price {
-            font-size: 22px;
-            color: #888;
-            text-decoration: line-through;
-            margin-bottom: 5px;
-        }
-
-        .new-price {
-            font-size: 50px;
-            font-weight: 900;
-            color: var(--main-red);
-            margin: 0;
-            line-height: 1;
-        }
-
-        .size-guide {
-            padding: 60px 20px;
-            text-align: center;
-            background: #1A1A1A;
-        }
-
-        .size-guide h2 {
-            font-size: 36px;
-            color: var(--main-red);
-            margin-bottom: 30px;
-            font-weight: 900;
-        }
-
-        .size-guide p {
-            font-size: 18px;
-            margin-bottom: 25px;
-            color: #ddd;
-        }
-
-        .size-table {
-            width: 100%;
-            max-width: 650px;
-            margin: 0 auto;
-            border-collapse: collapse;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-            font-size: 18px;
-            color: var(--text-light);
-        }
-
-        .size-table th, .size-table td {
-            border: 1px solid #333;
-            padding: 15px 10px;
-        }
-
-        .size-table th {
-            background: var(--main-red);
-            color: white;
-            font-weight: 700;
-        }
-
-        .size-table tr:nth-child(even) {
-            background: #111;
-        }
-
-        .size-table tr:hover {
-            background: #252525;
-        }
+        .legacy-section { padding: 80px 20px; background: url('cr7_bg.jpg') no-repeat center center; background-size: cover; background-attachment: fixed; position: relative; color: white; text-align: center; }
+        .legacy-section::before { content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.85); z-index: 1; }
+        .legacy-content { position: relative; z-index: 2; max-width: 1000px; margin: 0 auto; }
+        .legacy-content h2 { font-size: 45px; color: var(--main-red); margin-bottom: 40px; text-shadow: 2px 2px 5px #000; }
+        .legacy-content p { line-height: 1.7; }
+        .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; margin-top: 30px; }
+        .stat-item { background: #1A1A1A; padding: 25px; border-radius: 10px; border-top: 4px solid var(--main-red); }
+        .stat-item .number { font-family: 'Audiowide', sans-serif; font-size: 40px; color: var(--main-red); font-weight: 900; }
+        .stat-item .text { font-size: 18px; margin-top: 5px; color: #ccc; }
         
-        .legacy-section {
-            padding: 80px 20px;
-            background: url('cr7_bg.jpg') no-repeat center center; 
-            background-size: cover;
-            position: relative;
-            color: white;
-            text-align: center;
-        }
+        .faq-section { background: var(--bg-dark); padding: 80px 20px; color: var(--text-light); text-align: center; border-top: 3px solid var(--main-red); }
+        .faq-section h2 { font-size: 40px; font-weight: 900; margin-bottom: 50px; color: var(--main-red); }
+        .faq-container { max-width: 800px; margin: 0 auto; text-align: right; }
+        .faq-item { border-bottom: 1px solid #333; padding: 20px 0; cursor: pointer; }
+        .faq-item:hover .question { color: var(--main-red); }
+        .question { font-size: 18px; font-weight: 700; color: white; position: relative; display: flex; justify-content: space-between; align-items: center; }
+        .question i { margin-right: 0; margin-left: 15px; font-size: 16px; transition: transform 0.3s; }
+        .faq-item.active .question i { transform: rotate(180deg); }
+        .answer { font-size: 16px; color: #ccc; padding-top: 0; line-height: 1.7; max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out, padding-top 0.4s ease-out; }
+        .faq-item.active .answer { max-height: 500px; padding-top: 15px; }
         
-        .legacy-section::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.85); 
-            z-index: 1;
-        }
+        .site-footer { background: black; color: #aaa; padding: 60px 20px 30px; border-top: 1px solid #333; }
+        .footer-content { display: flex; flex-wrap: wrap; justify-content: space-between; max-width: 1200px; margin: 0 auto; text-align: right; }
+        .footer-logo-desc { max-width: 400px; }
+        .footer-logo-desc h3.brand-name-style { font-size: 28px; color: var(--main-red); letter-spacing: 2px; font-weight: 700; direction: ltr; unicode-bidi: embed; padding: 0; border: none; background: none; display: block; margin-bottom: 10px; }
+        .footer-logo-desc p { line-height: 1.7; font-size: 15px; color: #aaa; }
+        .footer-links h3, .footer-social h3 { font-size: 20px; color: var(--main-red); margin-bottom: 20px; font-weight: 700; }
+        .footer-links a { display: block; color: #ccc; text-decoration: none; margin-bottom: 10px; transition: color 0.3s; font-size: 16px; }
+        .footer-links a:hover { color: white; }
+        .footer-social .social-icons a { font-size: 28px; color: var(--main-red); margin-left: 15px; transition: opacity 0.3s; }
+        .footer-social .social-icons a:hover { opacity: 0.7; }
+        .footer-bottom { text-align: center; padding-top: 30px; border-top: 1px solid #333; margin-top: 30px; font-size: 14px; color: #555; }
+        .footer-bottom .inline-brand-style { font-size: 16px !important; }
 
-        .legacy-content {
-            position: relative;
-            z-index: 2;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .legacy-content h2 {
-            font-size: 45px;
-            color: var(--main-red);
-            margin-bottom: 40px;
-            text-shadow: 2px 2px 5px #000;
-        }
-
-        .legacy-content p {
-            line-height: 1.7;
-        }
-
-        .stat-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            margin-top: 30px;
-        }
-
-        .stat-item {
-            background: #1A1A1A;
-            padding: 25px;
-            border-radius: 10px;
-            border-top: 4px solid var(--main-red);
-        }
-
-        .stat-item .number {
-            font-family: 'Audiowide', sans-serif;
-            font-size: 40px;
-            color: var(--main-red);
-            font-weight: 900;
-        }
-
-        .stat-item .text {
-            font-size: 18px;
-            margin-top: 5px;
-            color: #ccc;
-        }
-        
-        /* ==== FAQ SECTION ==== */
-        .faq-section {
-            background: var(--bg-dark);
-            padding: 80px 20px;
-            color: var(--text-light);
-            text-align: center;
-            border-top: 3px solid var(--main-red);
-        }
-
-        .faq-section h2 {
-            font-size: 40px;
-            font-weight: 900;
-            margin-bottom: 50px;
-            color: var(--main-red);
-        }
-
-        .faq-container {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: right;
-        }
-
-        .faq-item {
-            border-bottom: 1px solid #333; 
-            padding: 20px 0;
-            cursor: pointer;
-        }
-        
-        .faq-item:hover .question {
-            color: var(--main-red);
-        }
-
-        .question {
-            font-size: 18px;
-            font-weight: 700;
-            color: white; 
-            position: relative;
-        }
-        
-        .question i {
-            margin-left: 15px;
-            font-size: 16px;
-            transition: transform 0.3s;
-        }
-        
-        .faq-item.active .question i {
-            transform: rotate(180deg);
-        }
-
-        /* تحسينات لستايل الـ FAQ ليعمل مع الرسوم المتحركة */
-        .answer {
-            font-size: 16px;
-            color: #ccc; 
-            padding-top: 0; /* تم التعديل */
-            line-height: 1.7;
-            max-height: 0; /* تم التعديل للإخفاء باستخدام الارتفاع */
-            overflow: hidden; /* تم التعديل */
-            transition: max-height 0.4s ease-out, padding-top 0.4s ease-out; /* تم التعديل */
-        }
-        
-        /* الفئة الجديدة لإظهار الإجابة */
-        .faq-item.active .answer {
-            max-height: 500px; /* قيمة كبيرة بما يكفي لأي إجابة */
-            padding-top: 15px; /* لإضافة مسافة بعد الفتح */
-        }
-        
-        /* تم إزالة @keyframes slideDown ودمجه في الانتقالات (transition) */
-        
-        /* ==== FOOTER ==== */
-        .site-footer {
-            background: black;
-            color: #aaa;
-            padding: 60px 20px 30px;
-            border-top: 1px solid #333;
-        }
-
-        .footer-content {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            max-width: 1200px;
-            margin: 0 auto;
-            text-align: right;
-        }
-
-        .footer-logo-desc {
-            max-width: 400px;
-        }
-        
-        /* تم دمج ستايل العنوان الرئيسي للفوتر هنا ليأخذ حجمه الجديد */
-        .footer-logo-desc h3.brand-name-style {
-            font-family: 'Audiowide', sans-serif;
-            font-size: 28px; 
-            color: var(--main-red);
-            letter-spacing: 2px;
-            font-weight: 700;
-            direction: ltr; 
-            unicode-bidi: embed;
-            padding: 0;
-            border: none;
-            background: none;
-            display: block;
-            margin-bottom: 10px;
-        }
-
-        .footer-logo-desc p {
-            line-height: 1.7;
-            font-size: 15px;
-            color: #aaa;
-        }
-
-        .footer-links h3, .footer-social h3 {
-            font-size: 20px;
-            color: var(--main-red);
-            margin-bottom: 20px;
-            font-weight: 700;
-        }
-
-        .footer-links a {
-            display: block;
-            color: #ccc; 
-            text-decoration: none;
-            margin-bottom: 10px;
-            transition: color 0.3s;
-            font-size: 16px;
-        }
-
-        .footer-links a:hover {
-            color: white;
-        }
-
-        .footer-social .social-icons a {
-            font-size: 28px;
-            color: var(--main-red);
-            margin-left: 15px;
-            transition: opacity 0.3s;
-        }
-
-        .footer-social .social-icons a:hover {
-            opacity: 0.7;
-        }
-        
-        .footer-bottom {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid #333;
-            margin-top: 30px;
-            font-size: 14px;
-            color: #555;
-        }
-        
-        .footer-bottom .inline-brand-style {
-            font-size: 16px !important; 
-        }
-
-        /* ==== Media Queries ==== */
-        @media (min-width: 768px) {
-            .footer-logo-desc { width: 40%; }
-            .footer-links { width: 20%; }
-            .footer-social { width: 20%; }
-            .footer-content { text-align: right; }
-        }
-        @media (max-width: 768px) {
-             .faq-section, .why-us-section { padding: 40px 15px; }
+        @media (min-width: 768px) { .footer-logo-desc { width: 40%; } .footer-links { width: 20%; } .footer-social { width: 20%; } .footer-content { text-align: right; } }
+        @media (max-width: 768px) { 
+            .hero h1 { font-size: 45px; } 
+            .hero p { font-size: 20px; } 
+            .cta-button { padding: 15px 30px; font-size: 20px; } 
+            .faq-section, .why-us-section { padding: 40px 15px; } 
+            .size-table th, .size-table td { padding: 10px 5px; font-size: 16px; } 
+            .legacy-content h2 { font-size: 35px; } 
+            .legacy-content p { font-size: 18px; } 
+            .product-details-container { gap: 20px; } 
         }
     </style>
 </head>
@@ -611,8 +354,6 @@
 <body>
 
     <div class="hero">
-        <?php $whatsapp_link = "https://wa.me/201558347735?text=" . urlencode("مرحباً، أرغب في طلب هودي CR7 الأسود الخاص بالإصدار المحدود، من فضلك أرسل لي تفاصيل الطلب."); ?>
-        
         <video id="heroVideo" autoplay muted loop playsinline>
             <source src="hero.mp4" type="video/mp4">
             متصفحك لا يدعم عنصر الفيديو.
@@ -622,9 +363,10 @@
             <div class="brand-name-style" dir="ltr">2000's STORE</div>
             <h1>هودي الأسطورة <span style="color: var(--main-red)">CR7</span>: تاريخ يُلبس</h1>
             <p>من براند <span class="inline-brand-style">2000's STORE</span>.. تصميم حصري، جودة أبطال. ارتدِ شغف كرة القدم والأرقام القياسية. اطلب الآن لتكن جزءاً من الإرث.</p>
-            <a href="https://wa.me/201558347735" class="cta-link">
-                اطلب هودي الأسطورة الآن عبر الواتساب
-            </a>
+            
+            <button class="cta-button" onclick="openOrderModal()">
+                اطلب هودي الأسطورة الآن
+            </button>
         </div>
     </div>
 
@@ -696,15 +438,16 @@
                     <i class="fas fa-chevron-left"></i>
                 </button>
             </div>
+            
             <div class="price-box">
                 <div class="old-price">999 جنيه</div>
                 <div class="new-price">699 جنيه</div>
                 <p style="color:#aaa; margin-top:10px; font-size:14px">احجز نسختك من الإصدار المحدود بسعر خاص!</p>
             </div>
 
-            <a href="https://wa.me/201558347735" class="cta-link" style="width: 100%; max-width: 400px;">
+            <button class="cta-button" style="width: 100%; max-width: 400px; margin-top:20px;" onclick="openOrderModal()">
                 اضغط هنا للطلب الفوري ⚡
-            </a>
+            </button>
         </div>
     </div>
     
@@ -747,7 +490,10 @@
                     <div class="number">🇵🇹 القائد</div><div class="text">بطل كأس الأمم الأوروبية 2016</div>
                 </div>
             </div>
-            <a href="https://wa.me/201558347735" class="cta-link" style="margin-top: 50px;">اطلب هودي الأسطورة الآن وانضم للإرث</a>
+            
+            <button class="cta-button" style="margin-top: 50px;" onclick="openOrderModal()">
+                اطلب هودي الأسطورة الآن وانضم للإرث
+            </button>
         </div>
     </div>
     
@@ -756,90 +502,55 @@
         <p style="color: #ccc; margin-bottom: 50px;">هنا هتلاقى إجابات لكل الأسئلة التى ممكن تخطر على بالك</p>
         
         <div class="faq-container">
-            
             <div class="faq-item">
-                <div class="question">
-                    ما هي مدة التوصيل للأوردر؟ <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="answer">
-                    متوسط مدة توصيل الأوردر من **3-5 أيام** حسب مكان العميل. نهدف دائماً إلى سرعة وسلامة التوصيل لترتدي الهودي بأسرع وقت.
-                </div>
+                <div class="question">ما هي مدة التوصيل للأوردر؟ <i class="fas fa-chevron-down"></i></div>
+                <div class="answer">متوسط مدة توصيل الأوردر من **3-5 أيام** حسب مكان العميل. نهدف دائماً إلى سرعة وسلامة التوصيل لترتدي الهودي بأسرع وقت.</div>
             </div>
             
             <div class="faq-item">
-                <div class="question">
-                    كيف أعرف مقاسي؟ <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="answer">
-                    نوفر **جدول مقاسات سهل ومفصل** في قسم المقاسات (يمكنك الصعود للأعلى لمعرفة جدول المقاسات) لضمان اختيار المقاس المناسب الذي يليق بك.
-                </div>
+                <div class="question">كيف أعرف مقاسي؟ <i class="fas fa-chevron-down"></i></div>
+                <div class="answer">نوفر **جدول مقاسات سهل ومفصل** في قسم المقاسات (يمكنك الصعود للأعلى لمعرفة جدول المقاسات) لضمان اختيار المقاس المناسب الذي يليق بك.</div>
             </div>
             
             <div class="faq-item">
-                <div class="question">
-                    ما هي طرق الدفع المتاحة؟ <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="answer">
-                    متاح الدفع عن طريق (**انستاباى / المحافظ الذكية / الدفع عند الاستلام**). اختر الطريقة الأنسب لك.
-                </div>
+                <div class="question">ما هي طرق الدفع المتاحة؟ <i class="fas fa-chevron-down"></i></div>
+                <div class="answer">متاح الدفع عن طريق (**انستاباى / المحافظ الذكية / الدفع عند الاستلام**). اختر الطريقة الأنسب لك.</div>
             </div>
             
             <div class="faq-item">
-                <div class="question">
-                    هل يمكنني معاينة المنتج قبل الاستلام؟ <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="answer">
-                    أجل طبعاً، نقدم خدمة **معاينة الأوردر** قبل الاستلام براحتك للاستفادة بتجربة شراء مضمونة ومريحة وتأكد من جودة منتج الأسطورة.
-                </div>
+                <div class="question">هل يمكنني معاينة المنتج قبل الاستلام؟ <i class="fas fa-chevron-down"></i></div>
+                <div class="answer">أجل طبعاً، نقدم خدمة **معاينة الأوردر** قبل الاستلام براحتك للاستفادة بتجربة شراء مضمونة ومريحة وتأكد من جودة منتج الأسطورة.</div>
             </div>
 
             <div class="faq-item">
-                <div class="question">
-                    ما هي سياسة الاستبدال و الاسترجاع؟ <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="answer">
-                    يمكنك بكل بساطة استبدال أو استرجاع المنتج في خلال **14 يوم** من تاريخ استلام المنتج، بدون إبداء أي توضيحات. و استرجاع الأموال يتم في خلال **72 ساعة**.
-                </div>
+                <div class="question">ما هي سياسة الاستبدال و الاسترجاع؟ <i class="fas fa-chevron-down"></i></div>
+                <div class="answer">يمكنك بكل بساطة استبدال أو استرجاع المنتج في خلال **14 يوم** من تاريخ استلام المنتج، بدون إبداء أي توضيحات. و استرجاع الأموال يتم في خلال **72 ساعة**.</div>
             </div>
 
             <div class="faq-item">
-                <div class="question">
-                    آراء العملاء عن التواصل مع خدمة العملاء <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="answer">
-                    نقدم لك خدمة تواصل ودية وآمنة عبر (**واتساب، انستجرام، الهاتف**). نعمل دائماً لضمان راحتك وسرعة الرد على استفساراتك.
-                </div>
+                <div class="question">آراء العملاء عن التواصل مع خدمة العملاء <i class="fas fa-chevron-down"></i></div>
+                <div class="answer">نقدم لك خدمة تواصل ودية وآمنة عبر (**واتساب، انستجرام، الهاتف**). نعمل دائماً لضمان راحتك وسرعة الرد على استفساراتك.</div>
             </div>
             
             <div class="faq-item">
-                <div class="question">
-                    هل هناك خيار لهدايا المنتج لشخص آخر؟ <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="answer">
-                    نعم، يمكنك وضع أي وصف لطلبك أن تشحن المنتج كهدية لشخص آخر وسيتم تنفيذ الطلب بشكل احترافي.
-                </div>
+                <div class="question">هل هناك خيار لهدايا المنتج لشخص آخر؟ <i class="fas fa-chevron-down"></i></div>
+                <div class="answer">نعم، يمكنك وضع أي وصف لطلبك أن تشحن المنتج كهدية لشخص آخر وسيتم تنفيذ الطلب بشكل احترافي.</div>
             </div>
-
         </div>
     </div>
 
     <footer class="site-footer">
         <div class="footer-content">
-            
             <div class="footer-logo-desc">
                 <h3 class="brand-name-style" dir="ltr">2000's STORE</h3> 
-                <p>
-                    في <span class="inline-brand-style">2000's STORE</span>، نقدم لك تجربة تسوق ممتعة وعملية. نحرص دائماً على اختيار أفضل التصاميم وأحدث الصيحات، مع التركيز على الجودة والراحة. هدفنا هو أن نمنحك تجربة تسوق من منزلك بكل راحة وسعادة!
-                </p>
+                <p>في <span class="inline-brand-style">2000's STORE</span>، نقدم لك تجربة تسوق ممتعة وعملية. نحرص دائماً على اختيار أفضل التصاميم وأحدث الصيحات، مع التركيز على الجودة والراحة.</p>
             </div>
-            
             <div class="footer-links">
                 <h3>روابط</h3>
                 <a href="#">الرئيسية</a>
                 <a href="#size">أعرف مقاسك</a>
                 <a href="#faq">الأسئلة الشائعة</a>
             </div>
-
             <div class="footer-social">
                 <h3>تابعنا</h3>
                 <div class="social-icons">
@@ -849,13 +560,93 @@
                 </div>
             </div>
         </div>
-        
         <div class="footer-bottom">
-            جميع الحقوق محفوظة لـ <span class="inline-brand-style" style="font-size: 16px !important; text-shadow: none;">2000's STORE</span> &copy; 2025
+            جميع الحقوق محفوظة لـ <span class="inline-brand-style" style="font-size: 16px !important;">2000's STORE</span> &copy; 2025
         </div>
     </footer>
-    
+
+    <div id="orderModal" class="modal-overlay">
+        <div class="form-container">
+            <button class="close-modal" onclick="closeOrderModal()">&times;</button>
+            <h2>أكمل طلبك الآن 🔥</h2>
+            
+            <form action="https://getform.io/f/bxozdmqa" method="POST" enctype="multipart/form-data">
+                
+                <input type="hidden" name="Product" value="CR7 Legend Hoodie - Black">
+                
+                <div class="form-group">
+                    <label>الاسم بالكامل:</label>
+                    <input type="text" name="Name" required placeholder="أدخل اسمك الثلاثي">
+                </div>
+
+                <div class="form-group">
+                    <label>رقم الهاتف:</label>
+                    <input type="tel" name="Phone" required placeholder="01xxxxxxxxx">
+                </div>
+
+                <div class="form-group">
+                    <label>رقم هاتف احتياطي (اختياري):</label>
+                    <input type="tel" name="Backup_Phone" placeholder="رقم آخر للتواصل">
+                </div>
+
+                <div class="form-group">
+                    <label>العنوان بالتفصيل:</label>
+                    <input type="text" name="Address" required placeholder="المحافظة - المدينة - اسم الشارع - رقم العمارة">
+                </div>
+
+                <div style="display: flex; gap: 10px;">
+                    <div class="form-group" style="flex: 1;">
+                        <label>المقاس:</label>
+                        <select name="Size" required>
+                            <option value="" disabled selected>اختر</option>
+                            <option value="M">M</option>
+                            <option value="L">L</option>
+                            <option value="XL">XL</option>
+                            <option value="2XL">2XL</option>
+                        </select>
+                    </div>
+                    <div class="form-group" style="flex: 1;">
+                        <label>الكمية:</label>
+                        <select name="Quantity">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>ملاحظات إضافية:</label>
+                    <textarea name="Notes" rows="3" placeholder="أي تفاصيل إضافية للطلب..."></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">تأكيد الطلب ✅</button>
+            </form>
+        </div>
+    </div>
+
     <script>
+        // ==== Modal Logic (فتح وإغلاق الفورم) ====
+        const modal = document.getElementById('orderModal');
+
+        function openOrderModal() {
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // منع التمرير في الخلفية
+        }
+
+        function closeOrderModal() {
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto'; // إعادة التمرير
+        }
+
+        // إغلاق المودال عند الضغط خارجه
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeOrderModal();
+            }
+        });
+
+        // ==== Slider Logic ====
         let slideIndex = 1;
         showSlides(slideIndex);
 
@@ -864,67 +655,51 @@
             showSlides(slideIndex);
         }
 
-        // الدالة المعدلة لدعم الصور والفيديو معاً
         function showSlides(n) {
             let i;
-            // اختيار جميع العناصر التي تحمل فئة slide-item (الصور والفيديوهات)
             let slides = document.querySelectorAll(".slide-item"); 
             
-            // التحقق من حدود الشرائح (سواء لليمين أو اليسار)
             if (n > slides.length) {slideIndex = 1}    
             if (n < 1) {slideIndex = slides.length}
 
             for (i = 0; i < slides.length; i++) {
-                slides[i].classList.remove('active'); // إزالة الفئة النشطة لإخفاء الشريحة
-                // إيقاف تشغيل أي فيديو يتم إخفاؤه
+                slides[i].classList.remove('active'); 
                 if (slides[i].tagName === 'VIDEO') {
                     slides[i].pause();
-                    slides[i].currentTime = 0; // إعادة الفيديو إلى البداية
+                    slides[i].currentTime = 0;
                 }
             }
             
-            // تفعيل الشريحة الجديدة
             slides[slideIndex-1].classList.add('active'); 
             
-            // إذا كانت الشريحة الجديدة فيديو، يتم تشغيله
             if (slides[slideIndex - 1].tagName === 'VIDEO') {
-                // محاولة التشغيل، وهي ممارسة مقبولة في محاولة التغلب على قيود المتصفح
                 slides[slideIndex - 1].play().catch(error => {
-                    console.log("Autoplay failed for product video, user interaction needed.", error);
+                    console.log("Autoplay blocked");
                 });
             }
         }
         
-        // FAQ Toggle - تم التعديل
+        // ==== FAQ Toggle ====
         document.querySelectorAll('.faq-item').forEach(item => {
             item.addEventListener('click', event => {
                 const answer = item.querySelector('.answer');
-                
-                // Close all other answers and remove active class
                 document.querySelectorAll('.faq-item').forEach(otherItem => {
                     if (otherItem !== item) {
                         otherItem.classList.remove('active');
                     }
                 });
-                
-                // Toggle the current item
                 item.classList.toggle('active');
             });
         });
         
-        // تحسين إضافي: محاولة تشغيل فيديو الهيرو عند تحميل الصفحة
+        // ==== Hero Video Autoplay Fix ====
         document.addEventListener("DOMContentLoaded", function() {
             const heroVideo = document.getElementById('heroVideo');
             if (heroVideo) {
-                // التأكد من أن الفيديو مكتوم قبل محاولة التشغيل
                 heroVideo.muted = true; 
-                heroVideo.play().catch(error => {
-                    console.log("Autoplay failed for hero video.", error);
-                    // يمكن إضافة زر تشغيل هنا إذا فشل التشغيل التلقائي
-                });
+                heroVideo.play().catch(error => console.log(error));
             }
         });
-        
     </script>
 
 </body>
